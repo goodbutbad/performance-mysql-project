@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Авторы проекта</title>
+    <style>
+        .card-img-top {
+            object-fit: cover;
+            height: 300px;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+<div layout:fragment="content">
+    <div class="breadcrumb my-3 mx-3  text-black width-100">
+        <a class="breadcrumb-item  text-black" th:href="@{/}">Главная</a>
+        <a class="breadcrumb-item  text-black" th:href="@{/home}">Спектакли</a>
+        <span class="breadcrumb-item">Авторы</span>
+    </div>
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Авторы проекта</h1>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="col">
+    <div class="card h-100 shadow">
+        <div class="card-img-top d-flex align-items-center justify-content-center bg-secondary text-white" style="height: 250px;">
+            <span class="fs-5">Фото отсутствует</span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Алымсеитов А.М.</h5>
+            <p class="card-text">
+                Студент группы ПМИ-1-22. Основной разработчик проекта: реализовал серверную логику на базе Spring Boot, настроил взаимодействие с базой данных MySQL, 
+                обеспечил обработку форм, загрузку изображений, а также реализовал CRUD-функциональность. Отвечал за интеграцию слоёв MVC и безопасность доступа к административной части.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img th:src="@{/uploads/bek.jpg}" class="card-img-top" alt="Жениш уулу Бек">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Жениш уулу Бек</h5>
+                        <p class="card-text">
+                            Студент группы ПМИ-1-22. Участвовал в проекте как фронтенд-консультант: предлагал архитектурные идеи, проводил оценку клиентской части и вносил корректировки. 
+                            Отвечал за подбор и адаптацию визуальных компонентов из Bootstrap с учетом требований к дизайну и удобству пользовательского интерфейса.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="text-muted">Проект выполнен студентами группы ПМИ-1-22</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

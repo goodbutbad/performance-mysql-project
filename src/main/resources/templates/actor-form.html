@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание Актера</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-secondary text-white">
+<div class="bg-dark text-white container form-container my-5 rounded">
+    <form class="p-4 bg-dark rounded shadow-sm" style="position: relative;" method="post" th:action="@{/actors/create}">
+        <a class="btn rounded btn-danger" style="position: absolute; top: 15px; right: 0;" th:href="@{/home}">Домой</a>
+        <div class="container-fluid">
+            <h2 class="mb-4">Создание Актера</h2>
+        </div>      
+
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Имя Актера</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Фамилия Актера</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="bio" class="form-label">БИО</label>
+            <textarea class="form-control" id="bio" name="bio" rows="4" placeholder="Краткое био актера..." required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="contactInfo" class="form-label">Контактная информация</label>
+            <input type="text" class="form-control" id="contactInfo" name="contactInfo" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="birthDate" class="form-label">Дата рождения</label>
+            <input type="date" class="form-control" id="birthDate" name="birthDate" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Создать актера</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Home</title>
+    <style>
+        .card-img-top {
+            width: 100%; 
+            height: 600px; 
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body class="bg-secondary text-white" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+        <div class="container mt-4">
+            <h2 class="mb-4">Результаты поиска по запросу: <span th:text="${query}">''</span></h2>
+        
+            <div class="row" th:if="${results.size() > 0}">
+                <div class="col-md-4 mb-4" th:each="performance : ${results}">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body bg-dark text-white rounded">
+                            <h5 class="card-title" th:text="${performance.title}">Название</h5>
+                            <p class="card-text" th:text="${performance.description}">Описание спектакля...</p>
+                            <a th:href="@{'/detail/' + ${performance.performanceId}}" class="btn btn-light">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div th:if="${results.size() == 0}">
+                <p>Ничего не найдено.</p>
+            </div>
+
+            <a th:href="@{/home}"><button class="btn btn-primary">Go back</button></a>
+        </div>
+        
+    </div>
+</body>
+</html>

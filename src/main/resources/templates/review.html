@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Home</title>
+    <style>
+        .card-img-top {
+            width: 100%; 
+            height: 600px; 
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body class="bg-secondary text-white" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+        <div class="container mt-5">
+            <h2>Оставьте отзыв</h2>
+            <form th:action="@{/performances/{id}/reviews(id=${performance.performanceId})}" method="post" th:object="${review}">
+
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Оценка</label>
+                    <select class="form-select" id="rating" th:field="*{rating}" required>
+                        <option value="">Выберите...</option>
+                        <option th:value="1">1</option>
+                        <option th:value="2">2</option>
+                        <option th:value="3">3</option>
+                        <option th:value="4">4</option>
+                        <option th:value="5">5</option>
+                    </select>
+                </div>
+        
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Комментарий</label>
+                    <textarea class="form-control" id="comment" th:field="*{comment}" rows="4" required></textarea>
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

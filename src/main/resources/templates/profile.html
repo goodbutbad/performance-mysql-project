@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Home</title>
+    <style>
+        .card-img-top {
+            width: 100%; 
+            height: 600px; 
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body class="bg-secondary text-white" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+        <div class="container mt-5">
+            <div class="card bg-dark text-white shadow-lg">
+                <div class="card-body">
+                    <h2 class="card-title">Профиль пользователя</h2>
+                    <p class="card-text"><strong>Имя пользователя:</strong> <span th:text="${user.username}">имя</span></p>
+                    <p class="card-text"><strong>Email:</strong> <span th:text="${user.email}">email</span></p>
+                    <p class="card-text"><strong>Роль:</strong> <span th:text="${user.role}">роль</span></p>
+        
+                    <a th:href="@{/home}" class="btn btn-light mt-3">Вернуться домой</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</body>
+</html>

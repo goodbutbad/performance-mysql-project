@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание спектакля</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body class="bg-secondary text-white">
+<div class="bg-dark text-white container form-container my-5 rounded">
+    <form style="position: relative;" class="p-4 bg-dark rounded shadow-sm" method="post" enctype="multipart/form-data" th:action="@{/post-form}">
+        <a class="btn rounded btn-danger" style="position: absolute; top: 15px; right: 0;" th:href="@{/home}">Домой</a>
+        <div class="container-fluid">
+            <h2 class="mb-4">Создание спектакля</h2>
+        </div>      
+
+        <!-- Название спектакля -->
+        <div class="mb-3">
+            <label for="title" class="form-label">Название спектакля</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+
+        <!-- Описание спектакля -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Описание спектакля</label>
+            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Краткое описание спектакля..." required></textarea>
+        </div>
+
+        <!-- Режиссер -->
+        <div class="mb-3">
+            <label for="director_id" class="form-label">Режиссер</label>
+            <select class="form-select" id="director_id" name="director_id" required>
+                <option value="">-- Выберите режиссера --</option>
+                <th:block th:each="director : ${directors}">
+                    <option th:value="${director.directorId}" th:text="|${director.firstName} ${director.lastName}|"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <!-- Актеры -->
+        <div class="mb-3">
+            <label for="actors" class="form-label">Актеры</label>
+            <select multiple class="form-select" id="actors" name="actor_id[]">
+                <th:block th:each="actor : ${actors}">
+                    <option th:value="${actor.actorId}" th:text="|${actor.firstName} ${actor.lastName}|"></option>
+                </th:block>
+            </select>
+            <div class="form-text">Удерживайте Ctrl (Cmd на Mac), чтобы выбрать нескольких актеров</div>
+        </div>
+
+        <!-- Длительность -->
+        <div class="mb-3">
+            <label for="duration" class="form-label">Длительность (минуты)</label>
+            <input type="number" class="form-control" id="duration" name="duration" min="1" required>
+        </div>
+
+        <!-- Жанр -->
+        <div class="mb-3">
+            <label for="genre" class="form-label">Жанр</label>
+            <input type="text" class="form-control" id="genre" name="genre" required>
+        </div>
+
+        <!-- Дата премьеры -->
+        <div class="mb-3">
+            <label for="premiere_date" class="form-label">Дата премьеры</label>
+            <input type="date" class="form-control" id="premiere_date" name="premiere_date" required>
+        </div>
+
+        <!-- Изображение спектакля -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Изображение спектакля</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Создать спектакль</button>
+    </form>
+</div>
+</body>
+</html>

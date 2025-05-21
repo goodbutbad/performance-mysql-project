@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>О сайте</title>
+    <style>
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .content h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .content h2 {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+        .content p {
+            margin-bottom: 15px;
+        }
+        .bg-light {
+            background-color: #f8f9fa;
+        }
+        .technology-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .technology-list li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+        <div class="container my-5 content">
+            <h1>О сайте</h1>
+            <p>Этот сайт представляет собой онлайн-платформу для отображения информации о спектаклях, их актерах, режиссерах и других деталях. Здесь можно просматривать спектакли, их описание, жанры, а также информацию о театральных постановках, актеров и режиссеров, участвующих в этих спектаклях.</p>
+            
+            <h2>Использованные технологии</h2>
+            <p>Для реализации этого проекта были использованы следующие технологии:</p>
+            <ul class="technology-list">
+                <li><strong>Spring Boot</strong> – популярный фреймворк для разработки на языке Java, который позволяет легко создавать и разворачивать веб-приложения.</li>
+                <li><strong>MySQL</strong> – реляционная база данных для хранения данных о спектаклях, актерах, режиссерах и прочем контенте.</li>
+                <li><strong>Thymeleaf</strong> – шаблонизатор для динамической генерации HTML-страниц на серверной стороне.</li>
+                <li><strong>Bootstrap</strong> – фреймворк для быстрого создания адаптивного и современного дизайна.</li>
+            </ul>
+
+            <h2>Что можно делать на сайте?</h2>
+            <p>На этом сайте вы можете:</p>
+            <ul>
+                <li>Просматривать информацию о спектаклях, их жанре и длительности.</li>
+                <li>Ознакомиться с подробностями о каждом спектакле, включая описание, актеров и режиссера.</li>
+                <li>Исследовать каст актеров, режиссеров, а также премьеры спектаклей.</li>
+            </ul>
+            <a th:href="@{/home}" class="text-success">
+                <h2>
+                    Исследовать
+                </h2>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

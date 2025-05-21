@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Director info</title>
+</head>
+<body class="bg-secondary text-white" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+        <div class="container my-5">
+           <div class=" bg-success rounded p-3">
+            <h4 th:text="|Имя Директора: ${director.firstName} ${director.lastName}|"></h4>
+<h4 th:text="|Краткая биография: ${director.bio}|"></h4>
+<h4 th:text="|Контактная информация: ${director.contactInfo}|"></h4>
+
+           </div>
+
+        </div>
+      
+    </div>
+</body>
+</html>

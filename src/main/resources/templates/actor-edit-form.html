@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать Актера</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-secondary text-white">
+<div class="container my-5">
+    <form method="post" class="p-4 bg-dark rounded shadow-sm position-relative" th:action="@{/actors/edit/{id}(id=${actor.actorId})}">
+
+        <a class="btn rounded btn-danger" style="position: absolute; top: 15px; right: 15px;" th:href="@{/home}">Домой</a>
+        <h2 class="mb-4">Редактировать Актера</h2>
+        <input type="hidden" name="actorId" th:value="${actor.actorId}">
+
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Имя</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" th:value="${actor.firstName}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Фамилия</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" th:value="${actor.lastName}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="bio" class="form-label">БИО</label>
+            <textarea class="form-control" id="bio" name="bio" rows="4"
+          th:text="${actor.bio}" required></textarea>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="contactInfo" class="form-label">Контактная информация</label>
+            <input type="text" class="form-control" id="contactInfo" name="contactInfo" th:value="${actor.contactInfo}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="birthDate" class="form-label">Дата рождения</label>
+            <input type="date" class="form-control" id="birthDate" name="birthDate" th:value="${actor.birthDate}" required>
+     
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Home</title>
+    <style>
+        .card-img-top {
+            width: 100%; 
+            height: 600px; 
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body class="bg-secondary text-white" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+      <div class="container">
+        <div class="container mt-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Отзывы о спектакле: <span th:text="${performance.title}"></span></h2>
+            <a class="btn btn-primary" th:href="@{/detail/{id}(id=${performance.performanceId})}">Go back</a>
+            </div>
+    
+            <div th:if="${reviews.isEmpty()}">
+                <p>Пока нет отзывов.</p>
+            </div>
+    
+            <div th:each="review : ${reviews}" class="card my-3">
+                <div class="card-body">
+                    <h5 class="card-title mb-2 text-muted">User: <a th:href="@{/profile/{id}(id=${review.user.id})}">
+                        <span class="text-black" th:text="${review.reviewerName}"></span>
+                    </a></h5>
+                    <h5 class="card-subtitle mb-2 text-muted">Review: <span class="text-black" th:text="${review.rating}"></span></h5>
+                    <h5 class="card-text text-muted">Comment: <span class="text-black" th:text="${review.comment}"></span></h5>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

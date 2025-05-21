@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Actor info</title>
+</head>
+<body class="bg-secondary text-white" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+        <div class="container my-5">
+           <div class=" bg-warning rounded p-3">
+            <h4 th:text="'Имя Актера: ' + ${actor.firstName} + ' ' + ${actor.lastName}"></h4>
+            <h4 th:text="'Краткая биография: ' + ${actor.bio}"></h4>
+            <h4 th:text="'Дата рождения: ' + ${actor.birthDate}"></h4>
+            <h4 th:text="'Контактная информация: ' + ${actor.contactInfo}"></h4>
+           </div>
+
+        </div>
+      
+    </div>
+</body>
+</html>

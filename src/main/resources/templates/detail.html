@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Детальная информация</title>
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .director, .actor {
+            font-style: italic;
+        }
+        .card-text {
+            margin-bottom: 10px;
+        }
+        .actor a {
+            text-decoration: none;
+            color: white;
+        }
+        .actor a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 900px;
+        }
+    </style>
+</head>
+<body class="bg-secondary text-white" style="box-sizing: border-box;">
+    <div layout:fragment="content">
+        <div class="breadcrumb my-3 mx-3  text-white width-100">
+            <a class="breadcrumb-item " th:href="@{/}">Главная</a>
+            <a class="breadcrumb-item" th:href="@{/home}">Спектакли</a>
+            <span class="breadcrumb-item" th:text="${performance.title}">Название спектакля</span>
+        </div>
+        <div class="container my-5 d-flex justify-content-center" style="position: relative;">
+            <div class="card h-100" style="width: 500px;">
+                <img th:src="@{'/uploads/' + ${performance.imagePath}}" class="card-img-top" alt="Изображение спектакля">
+
+                <div class="card-body bg-dark text-white rounded">
+                    <h5 class="card-title" th:text="${performance.title}">Название спектакля</h5>
+
+                    <p class="card-text" th:text="'Описание: ' + ${performance.description}">Описание: Тест</p>
+
+                    <p class="card-text" th:text="'Жанр: ' + ${performance.genre}">Жанр: Драма</p>
+
+                    <a th:href="@{/director-info/{id}(id=${performance.director.directorId})}">
+                        <p class="director card-text" th:text="'Режиссер: ' + ${performance.director.lastName} + ' ' + ${performance.director.firstName}">Режиссер: Бек</p>
+                    </a>
+
+                    <div th:each="cast : ${performance.cast}">
+                        <a th:href="@{/actor-info/{id}(id=${cast.actor.actorId})}">
+                            <p class="actor card-text" th:text="'Актер: ' + ${cast.actor.lastName} + ' ' + ${cast.actor.firstName}">Актер: Иванов И.И.</p>
+                        </a>
+                    </div>
+
+                    <p class="card-text" th:text="'Длительность: ' + ${performance.duration} + ' мин'">Длительность: 90 мин</p>
+                    <p class="card-text" th:text="'Премьера: ' + ${performance.premiereDate}">Премьера: 2024-12-01</p>
+                    <p class="card-text" th:if="${#lists.isEmpty(reviews)}">Нет отзывов пока</p>
+
+<p class="card-text" th:if="${!#lists.isEmpty(reviews)}"
+   th:text="'Средняя оценка: ' + ${#numbers.formatDecimal(averageRating, 1, 1)} + ' / 5'">
+    Средняя оценка: 4.2 / 5
+</p>
+
+                    <div class="d-flex justify-content-between">
+                        <a th:if="${!alreadyReviewed}"
+                        th:href="@{/review/{id}(id=${performance.performanceId})}"
+                        class="btn btn-primary">
+                         Оставить отзыв
+                     </a>
+                     <button th:if="${alreadyReviewed}" class="btn btn-secondary" disabled>
+                        Отзыв уже оставлен
+                    </button>
+                
+
+                        <a th:href="@{/show-reviews/{id}(id=${performance.performanceId})}" class="btn btn-primary">Прочитать отзывы</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+       
+    </div>
+</body>
+</html>
